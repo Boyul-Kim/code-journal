@@ -9,15 +9,85 @@
     crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Staatliches&display=swap"
+      rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
+    <div class="headerContainer">
+      <h1>Code Journal</h1>
+    </div>
   </header>
   <main>
-    <div data-view="edit-profile"></div>
+    <div class="container">
+      <form action="">
+        <div data-view="edit-profile">
+
+
+          <h1>Edit Profile</h1>
+
+          <div class="row">
+
+            <div class="imageContainer"><img class="imageSource" src="images/placeholder-image-square.jpg" alt=""></div>
+
+            <div class="inputContainer">
+              <div class="avatarURLInput">
+                <div class="label">
+                  <label for="avatar">Avatar URL</label>
+                </div>
+                <input type="text" name="avatarURL" id="avatar" required>
+              </div>
+
+              <div class="usernameInput">
+                <div class="label">
+                  <label for="username">Username</label>
+                </div>
+                <input type="text" name="username" id="username" required>
+              </div>
+
+              <div class="fullnameInput">
+                <div class="label">
+                  <label for="fullname">Fullname</label>
+                </div>
+                <input type="text" name="fullName" id="fullname" required>
+              </div>
+
+              <div class="locationInput">
+                <div class="label">
+                  <label for="location">Location</label>
+                </div>
+                <input type="text" name="location" id="location" required>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="bioContainer">
+              <div class="bioInput">
+                <div class="label">
+                  <label for="bio">Bio</label>
+                </div>
+                <textarea class="bio" name="bio" id="" cols="30" rows="10" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowButton">
+            <input class="button" type="submit" value="Save">
+          </div>
+
+
+
+        </div>
+      </form>
+    </div>
+
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>

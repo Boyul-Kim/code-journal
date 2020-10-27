@@ -11,3 +11,15 @@ var data = {
   },
   entries: []
 };
+
+var previousEntriesJson = localStorage.getItem('entries');
+if (previousEntriesJson !== null) {
+  data.entries = JSON.parse(previousEntriesJson);
+}
+
+function dataStorage(event) {
+  var entriesJson = JSON.stringify(data.entries);
+  localStorage.setItem('entries', entriesJson);
+}
+
+window.addEventListener('beforeunload', dataStorage);
