@@ -13,9 +13,11 @@ function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
     $profile.setAttribute('hidden', 'hidden');
     $editProfile.removeAttribute('hidden');
+    data.view = dataView;
   } else if (dataView === 'profile') {
     $editProfile.setAttribute('hidden', 'hidden');
     $profile.removeAttribute('hidden');
+    data.view = dataView;
   } else {
     // console.log('invalid input');
   }
