@@ -20,6 +20,8 @@ function saveFunction(event) {
   data.profile.avatarUrl = $avatarURL.value;
   data.profile.bio = $bio.value;
   // console.log(data);
+  data.entries.push(data.profile);
+  // console.log(data.entries);
   event.preventDefault();
   $form.reset();
   $imageSource.setAttribute('src', 'images/placeholder-image-square.jpg');
