@@ -1,19 +1,99 @@
 
-body {
-  /* font-family: 'Staatliches', cursive;
-  font-family: 'Teko', sans-serif; */
-}
-
 header {
   background-color: rgb(156, 61, 61);
   font-family: 'Staatliches', cursive;
   color: white;
 }
 
-header > h1 {
+.headerContainer {
+  margin-left: 16%;
+}
+
+.container {
+  width: 75%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.rowButton {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.imageContainer {
+  width: 50%;
+}
+
+.imageContainer > img {
+  width: 100%;
+  height: 80%;
+}
+
+.inputContainer {
+  width: 50%;
   margin-left: 2rem;
 }
 
-/* @media screen and (max-width: 600px) {
+input,
+.label {
+  margin-bottom: 1rem;
+  font-size: larger;
+}
 
-} */
+input {
+  height: 2rem;
+  width: 100%;
+}
+
+.bioContainer {
+  width: 100%;
+}
+
+.bio {
+  width: 100%;
+}
+
+button {
+  width: 12%;
+  background-color: rgb(156, 61, 61);
+  color: white;
+  border: none;
+  height: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .headerContainer {
+    margin-left: 7%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .row {
+    display: block;
+  }
+
+  .imageContainer {
+    width: 100%;
+  }
+
+  .imageContainer > img {
+    width: 100%;
+  }
+
+  .inputContainer {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  button {
+    width: 20%;
+  }
+}

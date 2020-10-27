@@ -16,10 +16,74 @@
 </head>
 <body>
   <header>
-    <h1>Code Journal</h1>
+    <div class="headerContainer">
+      <h1>Code Journal</h1>
+    </div>
   </header>
   <main>
-    <div data-view="edit-profile"></div>
+    <form action="">
+      <div data-view="edit-profile">
+
+        <div class="container">
+          <h1>Edit Profile</h1>
+
+          <div class="row">
+
+            <div class="imageContainer"><img src="images/placeholder-image-square.jpg" alt=""></div>
+
+            <div class="inputContainer">
+              <div class="avatarURLInput">
+                <div class="label">
+                  <label for="avatar">Avatar URL</label>
+                </div>
+                <input type="text" name="" id="avatar">
+              </div>
+
+              <div class="usernameInput">
+                <div class="label">
+                  <label for="username">Username</label>
+                </div>
+                <input type="text" name="" id="username">
+              </div>
+
+              <div class="fullnameInput">
+                <div class="label">
+                  <label for="fullname">Fullname</label>
+                </div>
+                <input type="text" name="" id="fullname">
+              </div>
+
+              <div class="locationInput">
+                <div class="label">
+                  <label for="location">Location</label>
+                </div>
+                <input type="text" name="" id="location">
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="bioContainer">
+              <div class="bioInput">
+                <div class="label">
+                  <label for="bio">Bio</label>
+                </div>
+                <textarea class="bio" name="" id="" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="rowButton">
+            <button>Save</button>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
