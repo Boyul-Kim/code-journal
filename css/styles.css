@@ -1,6 +1,19 @@
-body {
-  /* background-color: rgb(156, 61, 61); */
 
+body {
   /* font-family: 'Staatliches', cursive;
   font-family: 'Teko', sans-serif; */
 }
+
+header {
+  background-color: rgb(156, 61, 61);
+  font-family: 'Staatliches', cursive;
+  color: white;
+}
+
+header > h1 {
+  margin-left: 2rem;
+}
+
+/* @media screen and (max-width: 600px) {
+
+} */
