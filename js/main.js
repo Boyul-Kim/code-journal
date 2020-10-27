@@ -6,6 +6,22 @@ var $bio = document.querySelector('.bio');
 var $form = document.querySelector('form');
 var $imageSource = document.querySelector('.imageSource');
 var $save = document.querySelector('.button');
+var $editProfile = document.querySelector('[data-view="edit-profile"]');
+var $profile = document.querySelector('[data-view="profile"]');
+
+function switchDataView(dataView) {
+  if (dataView === 'edit-profile') {
+    $profile.setAttribute('hidden', 'hidden');
+    $editProfile.removeAttribute('hidden');
+  } else if (dataView === 'profile') {
+    $editProfile.setAttribute('hidden', 'hidden');
+    $profile.removeAttribute('hidden');
+  } else {
+    // console.log('invalid input');
+  }
+}
+
+switchDataView('profile');
 
 function avatarFunction(event) {
   $imageSource.setAttribute('src', event.target.value);
