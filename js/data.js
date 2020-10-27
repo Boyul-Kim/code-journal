@@ -12,14 +12,14 @@ var data = {
   entries: []
 };
 
-var previousEntriesJson = localStorage.getItem('javascript-local-storage');
+var previousEntriesJson = localStorage.getItem('entries');
 if (previousEntriesJson !== null) {
   data.entries = JSON.parse(previousEntriesJson);
 }
 
 function dataStorage(event) {
   var entriesJson = JSON.stringify(data.entries);
-  localStorage.setItem('javascript-local-storage', entriesJson);
+  localStorage.setItem('entries', entriesJson);
 }
 
 window.addEventListener('beforeunload', dataStorage);
