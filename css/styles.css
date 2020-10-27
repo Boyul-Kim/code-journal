@@ -1,19 +1,16 @@
 
 header {
   background-color: rgb(156, 61, 61);
-  font-family: 'Staatliches', cursive;
   color: white;
-}
-
-.headerContainer {
-  margin-left: auto;
-  margin-right: auto;
-  width: 67%;
 }
 
 .container {
   width: 75%;
   font-family: 'Montserrat', sans-serif;
+}
+
+.container > h1 {
+  font-family: 'Staatliches', cursive;
 }
 
 .row {
@@ -71,12 +68,6 @@ input {
 }
 
 @media screen and (max-width: 600px) {
-  .headerContainer {
-    margin-left: auto;
-    margin-right: auto;
-    width: 86%;
-  }
-
   .container {
     width: 100%;
   }
