@@ -21,7 +21,6 @@ header {
 
 .rowButton {
   display: flex;
-  flex-wrap: nowrap;
   justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 1rem;

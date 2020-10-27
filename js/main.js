@@ -13,15 +13,12 @@ function avatarFunction(event) {
 $avatarURL.addEventListener('blur', avatarFunction);
 
 function saveFunction(event) {
-  // console.log($username.value);
   data.profile.username = $username.value;
   data.profile.fullName = $fullname.value;
   data.profile.location = $location.value;
   data.profile.avatarUrl = $avatarURL.value;
   data.profile.bio = $bio.value;
-  // console.log(data);
   data.entries.push(data.profile);
-  // console.log(data.entries);
   event.preventDefault();
   $form.reset();
   $imageSource.setAttribute('src', 'images/placeholder-image-square.jpg');
