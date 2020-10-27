@@ -3,6 +3,7 @@ var $username = document.querySelector('#username');
 var $fullname = document.querySelector('#fullname');
 var $location = document.querySelector('#location');
 var $bio = document.querySelector('.bio');
+var $form = document.querySelector('form');
 var $imageSource = document.querySelector('.imageSource');
 var $save = document.querySelector('.button');
 
@@ -20,6 +21,6 @@ function saveFunction(event) {
   data.profile.bio = $bio.value;
   // console.log(data);
   event.preventDefault();
-
+  $form.reset();
 }
 $save.addEventListener('click', saveFunction);
