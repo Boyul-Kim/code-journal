@@ -67,6 +67,17 @@ input {
   font-family: 'Montserrat', sans-serif;
 }
 
+.inputProfile {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.fas {
+  margin-right: 1rem;
+  font-size: 25px;
+}
+
 @media screen and (max-width: 600px) {
   .container {
     width: 100%;
