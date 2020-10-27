@@ -1,4 +1,8 @@
 var $avatarURL = document.querySelector('#avatar');
+var $username = document.querySelector('#username');
+var $fullname = document.querySelector('#fullname');
+var $location = document.querySelector('#location');
+var $bio = document.querySelector('.bio');
 var $imageSource = document.querySelector('.imageSource');
 var $save = document.querySelector('.button');
 
@@ -8,6 +12,14 @@ function avatarFunction(event) {
 $avatarURL.addEventListener('blur', avatarFunction);
 
 function saveFunction(event) {
-  // console.log('test');
+  // console.log($username.value);
+  data.profile.username = $username.value;
+  data.profile.fullName = $fullname.value;
+  data.profile.location = $location.value;
+  data.profile.avatarUrl = $avatarURL.value;
+  data.profile.bio = $bio.value;
+  // console.log(data);
+  event.preventDefault();
+
 }
 $save.addEventListener('click', saveFunction);
