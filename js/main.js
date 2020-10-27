@@ -22,5 +22,6 @@ function saveFunction(event) {
   // console.log(data);
   event.preventDefault();
   $form.reset();
+  $imageSource.setAttribute('src', 'images/placeholder-image-square.jpg');
 }
 $save.addEventListener('click', saveFunction);
