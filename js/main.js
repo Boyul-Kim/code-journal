@@ -65,6 +65,14 @@ function DOMtree(object) {
   $inputProfile3.textContent = object.profile.bio;
   $inputContainer.appendChild($inputProfile3);
 
+  var $editProfileButton = document.createElement('button');
+  var $editProfileLink = document.createElement('a');
+  $editProfileLink.setAttribute('href', '#');
+  $editProfileLink.setAttribute('data-view', 'edit-profile');
+  $editProfileLink.textContent = 'Edit Profile';
+  $editProfileButton.appendChild($editProfileLink);
+  $inputContainer.appendChild($editProfileButton);
+
   return $profileContainer;
 }
 
