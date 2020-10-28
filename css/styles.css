@@ -129,4 +129,14 @@ input {
   .button {
     width: 30%;
   }
+
+  .editProfileButton {
+    background-color: rgb(156, 61, 61);
+    border: none;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+  }
 }
