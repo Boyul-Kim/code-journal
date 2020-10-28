@@ -39,6 +39,10 @@ header {
   margin-left: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
 input,
 .label {
   margin-bottom: 1rem;

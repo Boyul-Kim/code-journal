@@ -70,14 +70,14 @@ function DOMtree(object) {
 
 function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
-    $profile.setAttribute('hidden', 'hidden');
-    $editProfile.removeAttribute('hidden');
+    $profile.className = 'hidden';
+    $editProfile.classList.remove('hidden');
     data.view = dataView;
   } else if (dataView === 'profile') {
     $profile.innerHTML = '';
     $profile.appendChild(DOMtree(data));
-    $editProfile.setAttribute('hidden', 'hidden');
-    $profile.removeAttribute('hidden');
+    $editProfile.className = 'hidden';
+    $profile.classList.remove('hidden');
     data.view = dataView;
   }
 }
