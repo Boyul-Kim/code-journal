@@ -93,6 +93,16 @@ input {
   font-size: 25px;
 }
 
+.editProfileButton {
+  background-color: rgb(156, 61, 61);
+  border: none;
+}
+
+.editProfileLink {
+  color: white;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 600px) {
   .container {
     width: 100%;
