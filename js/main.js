@@ -122,7 +122,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('click', function (event) {
-  if (event.target.attributes[0].value === '#') {
+  if (event.target.attributes[0].value === '#' && event.target.attributes[1].value === 'edit-profile') {
     switchDataView('edit-profile');
+  } else if (event.target.attributes[0].value === '#' && event.target.attributes[1].value === 'profile' && data.profile.username !== '') {
+    switchDataView('profile');
   }
 });

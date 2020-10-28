@@ -9,13 +9,24 @@ header {
   font-family: 'Montserrat', sans-serif;
 }
 
-.container > h1 {
+.container h1 {
   font-family: 'Staatliches', cursive;
 }
 
 .row {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.rowHeader {
+  display: flex;
+  align-items: center;
+}
+
+.rowHeader a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1rem;
 }
 
 .rowButton {
