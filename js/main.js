@@ -120,3 +120,9 @@ document.addEventListener('DOMContentLoaded', function () {
     switchDataView(data.view);
   }
 });
+
+document.addEventListener('click', function (event) {
+  if (event.target.attributes[0].value === '#') {
+    switchDataView('edit-profile');
+  }
+});
