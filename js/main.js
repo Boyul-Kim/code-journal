@@ -88,7 +88,7 @@ function avatarFunction(event) {
 $avatarURL.addEventListener('blur', avatarFunction);
 
 function saveFunction(event) {
-  data.entries.push(data.profile);
+  // data.entries.push(data.profile);
   event.preventDefault();
   data.profile.username = $username.value;
   data.profile.fullName = $fullname.value;
@@ -101,7 +101,7 @@ function saveFunction(event) {
 }
 $save.addEventListener('click', saveFunction);
 document.addEventListener('DOMContentLoaded', function () {
-  if (localStorage.entries.username === '') {
+  if (data.profile.username === '') {
     // console.log('edit-profile');
     switchDataView('edit-profile');
   } else {
