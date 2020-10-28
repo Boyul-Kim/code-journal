@@ -72,6 +72,12 @@ function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
     $profile.className = 'hidden';
     $editProfile.classList.remove('hidden');
+    $imageSource.setAttribute('src', data.profile.avatarUrl);
+    $avatarURL.value = data.profile.avatarUrl;
+    $username.value = data.profile.username;
+    $fullname.value = data.profile.fullName;
+    $location.value = data.profile.location;
+    $bio.value = data.profile.bio;
     data.view = dataView;
   } else if (dataView === 'profile') {
     $profile.innerHTML = '';
