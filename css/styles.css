@@ -1,19 +1,16 @@
 
 header {
   background-color: rgb(156, 61, 61);
-  font-family: 'Staatliches', cursive;
   color: white;
-}
-
-.headerContainer {
-  margin-left: auto;
-  margin-right: auto;
-  width: 67%;
 }
 
 .container {
   width: 75%;
   font-family: 'Montserrat', sans-serif;
+}
+
+.container > h1 {
+  font-family: 'Staatliches', cursive;
 }
 
 .row {
@@ -40,6 +37,10 @@ header {
 .inputContainer {
   width: 50%;
   margin-left: 2rem;
+}
+
+.hidden {
+  display: none;
 }
 
 input,
@@ -70,13 +71,18 @@ input {
   font-family: 'Montserrat', sans-serif;
 }
 
-@media screen and (max-width: 600px) {
-  .headerContainer {
-    margin-left: auto;
-    margin-right: auto;
-    width: 86%;
-  }
+.inputProfile {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
 
+.fas {
+  margin-right: 1rem;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 600px) {
   .container {
     width: 100%;
   }
