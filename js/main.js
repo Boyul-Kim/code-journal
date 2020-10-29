@@ -201,6 +201,10 @@ function DOMtreeNewEntry(data) {
   $notesTextArea.setAttribute('required', 'required');
   $notesInput.appendChild($notesTextArea);
 
+  $inputURLCreateEntry.addEventListener('blur', function () {
+    $imageSourceCreateEntry.setAttribute('src', event.target.value);
+  });
+
   return $newEntryContainer;
 }
 
