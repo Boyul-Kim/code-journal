@@ -10,6 +10,7 @@ var $save = document.querySelector('.button');
 var $editProfile = document.querySelector('.edit-profile');
 var $profile = document.querySelector('.profile');
 var $entries = document.querySelector('.entries');
+var $createEntry = document.querySelector('.create-entry');
 
 function DOMtree(object) {
   var $profileContainer = document.createElement('div');
@@ -98,15 +99,116 @@ function DOMTreeEntries(data) {
 
   var $newEntryLink = document.createElement('a');
   $newEntryLink.textContent = 'New';
+  $newEntryLink.setAttribute('href', '#');
+  $newEntryLink.setAttribute('data-view', 'create-entry');
   $newEntryButton.appendChild($newEntryLink);
 
   return $entriesContainer;
+}
+
+function DOMtreeNewEntry(data) {
+  var $newEntryContainer = document.createElement('form');
+  $newEntryContainer.className = 'newEntryContainer';
+
+  var $h1NewEntry = document.createElement('h1');
+  $h1NewEntry.className = 'h1NewEntry';
+  $h1NewEntry.textContent = 'New Entry';
+  $newEntryContainer.appendChild($h1NewEntry);
+
+  var $rowCreateEntry = document.createElement('div');
+  $rowCreateEntry.className = 'row';
+  $newEntryContainer.appendChild($rowCreateEntry);
+
+  var $imageContainerCreateEntry = document.createElement('div');
+  $imageContainerCreateEntry.className = 'imageContainer';
+  $rowCreateEntry.appendChild($imageContainerCreateEntry);
+
+  var $imageSourceCreateEntry = document.createElement('img');
+  $imageSourceCreateEntry.className = 'imageSource';
+  $imageSourceCreateEntry.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $imageContainerCreateEntry.appendChild($imageSourceCreateEntry);
+
+  var $inputContainerCreateEntry = document.createElement('div');
+  $inputContainerCreateEntry.className = 'inputContainer';
+  $rowCreateEntry.appendChild($inputContainerCreateEntry);
+
+  var $urlInputCreateEntry = document.createElement('div');
+  $urlInputCreateEntry.className = 'avatarURLInput';
+  $inputContainerCreateEntry.appendChild($urlInputCreateEntry);
+
+  var $labelContainerCreateEntry = document.createElement('div');
+  $labelContainerCreateEntry.className = 'label';
+  $urlInputCreateEntry.appendChild($labelContainerCreateEntry);
+
+  var $labelCreateEntry = document.createElement('label');
+  $labelCreateEntry.setAttribute('for', 'urlInput');
+  $labelCreateEntry.textContent = 'Image URL';
+  $labelContainerCreateEntry.appendChild($labelCreateEntry);
+
+  var $inputURLCreateEntry = document.createElement('input');
+  $inputURLCreateEntry.setAttribute('type', 'text');
+  $inputURLCreateEntry.setAttribute('name', 'urlInput');
+  $inputURLCreateEntry.setAttribute('id', 'urlInput');
+  $inputURLCreateEntry.setAttribute('required', 'required');
+  $urlInputCreateEntry.appendChild($inputURLCreateEntry);
+
+  var $titleInputCreateEntry = document.createElement('div');
+  $titleInputCreateEntry.className = 'usernameInput';
+  $inputContainerCreateEntry.appendChild($titleInputCreateEntry);
+
+  var $titleLabelContainerCreateEntry = document.createElement('div');
+  $titleLabelContainerCreateEntry.className = 'label';
+  $titleInputCreateEntry.appendChild($titleLabelContainerCreateEntry);
+
+  var $titleLabelCreateEntry = document.createElement('label');
+  $titleLabelCreateEntry.setAttribute('for', 'titleInput');
+  $titleLabelCreateEntry.textContent = 'Title';
+  $titleLabelContainerCreateEntry.appendChild($titleLabelCreateEntry);
+
+  var $inputTitleCreateEntry = document.createElement('input');
+  $inputTitleCreateEntry.setAttribute('type', 'text');
+  $inputTitleCreateEntry.setAttribute('name', 'titleInput');
+  $inputTitleCreateEntry.setAttribute('id', 'titleInput');
+  $inputTitleCreateEntry.setAttribute('required', 'required');
+  $titleInputCreateEntry.appendChild($inputTitleCreateEntry);
+
+  var $notesRowCreateEntry = document.createElement('row');
+  $notesRowCreateEntry.className = 'row';
+  $newEntryContainer.appendChild($notesRowCreateEntry);
+
+  var $notesContainer = document.createElement('div');
+  $notesContainer.className = 'bioContainer';
+  $notesRowCreateEntry.appendChild($notesContainer);
+
+  var $notesInput = document.createElement('div');
+  $notesInput.className = 'bioInput';
+  $notesContainer.appendChild($notesInput);
+
+  var $notesLabelContainer = document.createElement('div');
+  $notesLabelContainer.className = 'label';
+  $notesInput.appendChild($notesLabelContainer);
+
+  var $notesLabel = document.createElement('label');
+  $notesLabel.setAttribute('for', 'notes');
+  $notesLabel.textContent = 'Notes';
+  $notesLabelContainer.appendChild($notesLabel);
+
+  var $notesTextArea = document.createElement('textarea');
+  $notesTextArea.className = 'notes';
+  $notesTextArea.setAttribute('name', 'notes');
+  $notesTextArea.setAttribute('cols', '30');
+  $notesTextArea.setAttribute('rows', '10');
+  $notesTextArea.setAttribute('required', 'required');
+  $notesInput.appendChild($notesTextArea);
+
+  return $newEntryContainer;
 }
 
 function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
     $profile.className = 'hidden profile';
     $entries.className = 'hidden entries';
+    $createEntry.className = 'hidden create-entry';
     $editProfile.classList.remove('hidden');
     $imageSource.setAttribute('src', data.profile.avatarUrl);
     $avatarURL.value = data.profile.avatarUrl;
@@ -119,6 +221,7 @@ function switchDataView(dataView) {
     $profile.innerHTML = '';
     $profile.appendChild(DOMtree(data));
     $editProfile.className = 'hidden edit-profile';
+    $createEntry.className = 'hidden create-entry';
     $entries.className = 'hidden entries';
     $profile.classList.remove('hidden');
     data.view = dataView;
@@ -126,8 +229,17 @@ function switchDataView(dataView) {
     $entries.innerHTML = '';
     $entries.appendChild(DOMTreeEntries(data));
     $editProfile.className = 'hidden edit-profile';
+    $createEntry.className = 'hidden create-entry';
     $profile.className = 'hidden profile';
     $entries.classList.remove('hidden');
+    data.view = dataView;
+  } else if (dataView === 'create-entry') {
+    $createEntry.innerHTML = '';
+    $createEntry.appendChild(DOMtreeNewEntry(data));
+    $editProfile.className = 'hidden edit-profile';
+    $profile.className = 'hidden profile';
+    $entries.className = 'hidden entries';
+    $createEntry.classList.remove('hidden');
     data.view = dataView;
   }
 }
@@ -167,5 +279,8 @@ document.addEventListener('click', function () {
     switchDataView('profile');
   } else if (event.target.getAttribute('data-view') === 'entries' && data.profile.username !== '') {
     switchDataView('entries');
+  } else if (event.target.getAttribute('data-view') === 'create-entry') {
+    // console.log('success');
+    switchDataView('create-entry');
   }
 });

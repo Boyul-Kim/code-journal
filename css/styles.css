@@ -85,6 +85,10 @@ input {
   width: 100%;
 }
 
+.notes {
+  width: 100%;
+}
+
 .button {
   width: 15%;
   background-color: rgb(156, 61, 61);
