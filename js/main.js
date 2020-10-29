@@ -123,23 +123,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-/* document.addEventListener('click', function (event) {
-  if (event.target.attributes[0].value === '#' && event.target.attributes[1].value === 'edit-profile') {
-    switchDataView('edit-profile');
-    console.log(event.target.tagName);
-  } else if (event.target.attributes[0].value === '#' && event.target.attributes[1].value === 'profile' && data.profile.username !== '') {
-    switchDataView('profile');
-  }
-}); */
-
 document.addEventListener('click', function () {
   if (event.target.tagName !== 'A') {
-    return undefined;
-  } else {
-    if (event.target.attributes[1].value === 'edit-profile') {
-      switchDataView('edit-profile');
-    } else if (event.target.attributes[1].value === 'profile' && data.profile.username !== '') {
-      switchDataView('profile');
-    }
+    return;
+  }
+  if (event.target.getAttribute('data-view') === 'edit-profile') {
+    switchDataView('edit-profile');
+  } else if (event.target.getAttribute('class') === 'profile' && data.profile.username !== '') {
+    switchDataView('profile');
   }
 });
