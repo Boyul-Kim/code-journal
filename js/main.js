@@ -9,6 +9,7 @@ var $save = document.querySelector('.button');
 
 var $editProfile = document.querySelector('.edit-profile');
 var $profile = document.querySelector('.profile');
+var $entries = document.querySelector('.entries');
 
 function DOMtree(object) {
   var $profileContainer = document.createElement('div');
@@ -78,9 +79,26 @@ function DOMtree(object) {
   return $profileContainer;
 }
 
+function DOMTreeEntries(data) {
+  var $entriesContainer = document.createElement('div');
+  $entriesContainer.className = 'entriesContainer';
+
+  var $rowEntries = document.createElement('div');
+  $rowEntries.className = 'row';
+  $entriesContainer.appendChild($rowEntries);
+
+  var $h1Entries = document.createElement('h1');
+  $h1Entries.className = 'h1Entries';
+  $h1Entries.textContent = 'Entries';
+  $rowEntries.appendChild($h1Entries);
+
+  return $entriesContainer;
+}
+
 function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
     $profile.className = 'hidden profile';
+    $entries.className = 'hidden entries';
     $editProfile.classList.remove('hidden');
     $imageSource.setAttribute('src', data.profile.avatarUrl);
     $avatarURL.value = data.profile.avatarUrl;
@@ -93,7 +111,15 @@ function switchDataView(dataView) {
     $profile.innerHTML = '';
     $profile.appendChild(DOMtree(data));
     $editProfile.className = 'hidden edit-profile';
+    $entries.className = 'hidden entries';
     $profile.classList.remove('hidden');
+    data.view = dataView;
+  } else if (dataView === 'entries') {
+    $entries.innerHTML = '';
+    $entries.appendChild(DOMTreeEntries(data));
+    $editProfile.className = 'hidden edit-profile';
+    $profile.className = 'hidden profile';
+    $entries.classList.remove('hidden');
     data.view = dataView;
   }
 }
@@ -131,5 +157,7 @@ document.addEventListener('click', function () {
     switchDataView('edit-profile');
   } else if (event.target.getAttribute('data-view') === 'profile' && data.profile.username !== '') {
     switchDataView('profile');
+  } else if (event.target.getAttribute('data-view') === 'entries' && data.profile.username !== '') {
+    switchDataView('entries');
   }
 });
