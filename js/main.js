@@ -103,6 +103,12 @@ function DOMTreeEntries(data) {
   $newEntryLink.setAttribute('data-view', 'create-entry');
   $newEntryButton.appendChild($newEntryLink);
 
+  var $rowEntriesBody = document.createElement('div');
+  $rowEntriesBody.className = 'row';
+  $entriesContainer.appendChild($rowEntriesBody);
+  var $orderedList = document.createElement('ol');
+  $rowEntriesBody.appendChild($orderedList);
+
   return $entriesContainer;
 }
 
