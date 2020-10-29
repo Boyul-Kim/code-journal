@@ -106,8 +106,52 @@ function DOMTreeEntries(data) {
   var $rowEntriesBody = document.createElement('div');
   $rowEntriesBody.className = 'row';
   $entriesContainer.appendChild($rowEntriesBody);
+
   var $orderedList = document.createElement('ol');
   $rowEntriesBody.appendChild($orderedList);
+
+  var $list = document.createElement('li');
+  $orderedList.appendChild($list);
+
+  var $newEntryContainer = document.createElement('form');
+  $newEntryContainer.className = 'newEntryContainer';
+  $list.appendChild($newEntryContainer);
+
+  var $rowCreateEntry = document.createElement('div');
+  $rowCreateEntry.className = 'row';
+  $newEntryContainer.appendChild($rowCreateEntry);
+
+  var $imageContainerCreateEntry = document.createElement('div');
+  $imageContainerCreateEntry.className = 'imageContainer';
+  $rowCreateEntry.appendChild($imageContainerCreateEntry);
+
+  var $imageSourceCreateEntry = document.createElement('img');
+  $imageSourceCreateEntry.className = 'imageSource';
+  $imageSourceCreateEntry.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $imageContainerCreateEntry.appendChild($imageSourceCreateEntry);
+
+  var $inputContainerCreateEntry = document.createElement('div');
+  $inputContainerCreateEntry.className = 'inputContainer';
+  $rowCreateEntry.appendChild($inputContainerCreateEntry);
+
+  var $urlInputCreateEntry = document.createElement('div');
+  $urlInputCreateEntry.className = 'avatarURLInput';
+  $inputContainerCreateEntry.appendChild($urlInputCreateEntry);
+
+  var $labelContainerCreateEntry = document.createElement('div');
+  $labelContainerCreateEntry.className = 'label';
+  $urlInputCreateEntry.appendChild($labelContainerCreateEntry);
+
+  var $labelCreateEntry = document.createElement('label');
+  $labelCreateEntry.setAttribute('for', 'urlInput');
+  $labelCreateEntry.textContent = 'The Anayltical Machine';
+  $labelContainerCreateEntry.appendChild($labelCreateEntry);
+
+  var $inputTextContainer = document.createElement('div');
+  $inputContainerCreateEntry.appendChild($inputTextContainer);
+  var $inputURLCreateEntry = document.createElement('p');
+  $inputURLCreateEntry.textContent = '';
+  $inputTextContainer.appendChild($inputURLCreateEntry);
 
   return $entriesContainer;
 }
