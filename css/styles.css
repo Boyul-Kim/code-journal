@@ -43,9 +43,20 @@ header {
 }
 
 .newEntryButton {
-  height: 50%;
-  display: flex;
-  justify-content: flex-end;
+  height: 1.5rem;
+  background-color: rgb(156, 61, 61);
+  border: none;
+  width: 10%;
+}
+
+.h1Entries {
+  width: 80%;
+}
+
+.newEntryButton a {
+  color: white;
+  text-decoration: none;
+  margin-top: 2px;
 }
 
 .imageContainer {
@@ -154,5 +165,16 @@ input {
     margin-right: auto;
     display: flex;
     justify-content: center;
+  }
+
+  .h1Entries {
+    width: 70%;
+  }
+
+  .newEntryButton {
+    height: 1.5rem;
+    background-color: rgb(156, 61, 61);
+    border: none;
+    width: 20%;
   }
 }
