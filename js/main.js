@@ -218,7 +218,7 @@ function DOMtreeNewEntry(data) {
   function saveEntryFunction(event) {
     event.preventDefault();
     var entry = {
-      image: $imageSourceCreateEntry.value,
+      image: $inputURLCreateEntry.value,
       title: $inputTitleCreateEntry.value,
       notes: $notesTextArea.value
     };
