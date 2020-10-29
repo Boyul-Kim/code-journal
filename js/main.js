@@ -7,8 +7,6 @@ var $form = document.querySelector('form');
 var $imageSource = document.querySelector('.imageSource');
 var $save = document.querySelector('.button');
 
-// var $editProfile = document.querySelector('[data-view="edit-profile"]');
-// var $profile = document.querySelector('[data-view="profile"]');
 var $editProfile = document.querySelector('.edit-profile');
 var $profile = document.querySelector('.profile');
 
