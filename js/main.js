@@ -201,9 +201,33 @@ function DOMtreeNewEntry(data) {
   $notesTextArea.setAttribute('required', 'required');
   $notesInput.appendChild($notesTextArea);
 
+  var $saveCreateEntry = document.createElement('div');
+  $saveCreateEntry.className = 'rowButton';
+  $newEntryContainer.appendChild($saveCreateEntry);
+
+  var $saveInputCreateEntry = document.createElement('input');
+  $saveInputCreateEntry.className = 'button';
+  $saveInputCreateEntry.setAttribute('type', 'submit');
+  $saveInputCreateEntry.setAttribute('value', 'Save');
+  $saveCreateEntry.appendChild($saveInputCreateEntry);
+
   $inputURLCreateEntry.addEventListener('blur', function () {
     $imageSourceCreateEntry.setAttribute('src', event.target.value);
   });
+
+  function saveEntryFunction(event) {
+    event.preventDefault();
+    var entry = {
+      image: $imageSourceCreateEntry.value,
+      title: $inputTitleCreateEntry.value,
+      notes: $notesTextArea.value
+    };
+    data.entries.push(entry);
+    $form.reset();
+    $imageSourceCreateEntry.setAttribute('src', 'images/placeholder-image-square.jpg');
+    switchDataView('entries');
+  }
+  $saveInputCreateEntry.addEventListener('click', saveEntryFunction);
 
   return $newEntryContainer;
 }
