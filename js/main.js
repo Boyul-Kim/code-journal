@@ -7,8 +7,8 @@ var $form = document.querySelector('form');
 var $imageSource = document.querySelector('.imageSource');
 var $save = document.querySelector('.button');
 
-var $editProfile = document.querySelector('[data-view="edit-profile"]');
-var $profile = document.querySelector('[data-view="profile"]');
+var $editProfile = document.querySelector('.edit-profile');
+var $profile = document.querySelector('.profile');
 
 function DOMtree(object) {
   var $profileContainer = document.createElement('div');
@@ -65,18 +65,34 @@ function DOMtree(object) {
   $inputProfile3.textContent = object.profile.bio;
   $inputContainer.appendChild($inputProfile3);
 
+  var $editProfileButton = document.createElement('button');
+  var $editProfileLink = document.createElement('a');
+  $editProfileLink.setAttribute('href', '#');
+  $editProfileLink.setAttribute('data-view', 'edit-profile');
+  $editProfileButton.className = 'editProfileButton';
+  $editProfileLink.textContent = 'Edit Profile';
+  $editProfileLink.className = 'editProfileLink';
+  $editProfileButton.appendChild($editProfileLink);
+  $inputContainer.appendChild($editProfileButton);
+
   return $profileContainer;
 }
 
 function switchDataView(dataView) {
   if (dataView === 'edit-profile') {
-    $profile.className = 'hidden';
+    $profile.className = 'hidden profile';
     $editProfile.classList.remove('hidden');
+    $imageSource.setAttribute('src', data.profile.avatarUrl);
+    $avatarURL.value = data.profile.avatarUrl;
+    $username.value = data.profile.username;
+    $fullname.value = data.profile.fullName;
+    $location.value = data.profile.location;
+    $bio.value = data.profile.bio;
     data.view = dataView;
   } else if (dataView === 'profile') {
     $profile.innerHTML = '';
     $profile.appendChild(DOMtree(data));
-    $editProfile.className = 'hidden';
+    $editProfile.className = 'hidden edit-profile';
     $profile.classList.remove('hidden');
     data.view = dataView;
   }
@@ -104,5 +120,16 @@ document.addEventListener('DOMContentLoaded', function () {
     switchDataView('edit-profile');
   } else {
     switchDataView(data.view);
+  }
+});
+
+document.addEventListener('click', function () {
+  if (event.target.tagName !== 'A') {
+    return;
+  }
+  if (event.target.getAttribute('data-view') === 'edit-profile') {
+    switchDataView('edit-profile');
+  } else if (event.target.getAttribute('data-view') === 'profile' && data.profile.username !== '') {
+    switchDataView('profile');
   }
 });
