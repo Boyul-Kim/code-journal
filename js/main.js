@@ -84,13 +84,21 @@ function DOMTreeEntries(data) {
   $entriesContainer.className = 'entriesContainer';
 
   var $rowEntries = document.createElement('div');
-  $rowEntries.className = 'row';
+  $rowEntries.className = 'rowEntries';
   $entriesContainer.appendChild($rowEntries);
 
   var $h1Entries = document.createElement('h1');
   $h1Entries.className = 'h1Entries';
   $h1Entries.textContent = 'Entries';
   $rowEntries.appendChild($h1Entries);
+
+  var $newEntryButton = document.createElement('button');
+  $newEntryButton.className = 'newEntryButton';
+  $rowEntries.appendChild($newEntryButton);
+
+  var $newEntryLink = document.createElement('a');
+  $newEntryLink.textContent = 'New';
+  $newEntryButton.appendChild($newEntryLink);
 
   return $entriesContainer;
 }
