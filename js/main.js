@@ -301,11 +301,11 @@ document.addEventListener('click', function () {
   if (event.target.tagName !== 'A') {
     return;
   }
-  if (event.target.getAttribute('data-view') === 'edit-profile') {
+  if (event.target.getAttribute('data-view') === 'edit-profile' || data.profile.username === '') {
     switchDataView('edit-profile');
-  } else if (event.target.getAttribute('data-view') === 'profile' && data.profile.username !== '') {
+  } else if (event.target.getAttribute('data-view') === 'profile') {
     switchDataView('profile');
-  } else if (event.target.getAttribute('data-view') === 'entries' && data.profile.username !== '') {
+  } else if (event.target.getAttribute('data-view') === 'entries') {
     switchDataView('entries');
   } else if (event.target.getAttribute('data-view') === 'create-entry') {
     // console.log('success');
