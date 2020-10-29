@@ -36,6 +36,29 @@ header {
   margin-bottom: 1rem;
 }
 
+.rowEntries {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.newEntryButton {
+  height: 1.5rem;
+  background-color: rgb(156, 61, 61);
+  border: none;
+  width: 10%;
+}
+
+.h1Entries {
+  width: 80%;
+}
+
+.newEntryButton a {
+  color: white;
+  text-decoration: none;
+  margin-top: 2px;
+}
+
 .imageContainer {
   width: 50%;
 }
@@ -70,6 +93,10 @@ input {
 }
 
 .bio {
+  width: 100%;
+}
+
+.notes {
   width: 100%;
 }
 
@@ -138,5 +165,16 @@ input {
     margin-right: auto;
     display: flex;
     justify-content: center;
+  }
+
+  .h1Entries {
+    width: 70%;
+  }
+
+  .newEntryButton {
+    height: 1.5rem;
+    background-color: rgb(156, 61, 61);
+    border: none;
+    width: 20%;
   }
 }
