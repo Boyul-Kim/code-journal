@@ -106,6 +106,60 @@ function DOMTreeEntries(data) {
   return $entriesContainer;
 }
 
+function addJournalEntry(dataEntry) {
+
+  var $rowEntriesBody = document.createElement('div');
+  $rowEntriesBody.className = 'row';
+
+  var $orderedList = document.createElement('ul');
+  $rowEntriesBody.appendChild($orderedList);
+
+  var $list = document.createElement('li');
+  $orderedList.appendChild($list);
+
+  var $newEntryContainer = document.createElement('div');
+  $newEntryContainer.className = 'newEntryContainer';
+  $list.appendChild($newEntryContainer);
+
+  var $rowCreateEntry = document.createElement('div');
+  $rowCreateEntry.className = 'row';
+  $newEntryContainer.appendChild($rowCreateEntry);
+
+  var $imageContainerCreateEntry = document.createElement('div');
+  $imageContainerCreateEntry.className = 'imageContainer';
+  $rowCreateEntry.appendChild($imageContainerCreateEntry);
+
+  var $imageSourceCreateEntry = document.createElement('img');
+  $imageSourceCreateEntry.className = 'imageSource';
+  $imageSourceCreateEntry.setAttribute('src', dataEntry.image);
+  $imageContainerCreateEntry.appendChild($imageSourceCreateEntry);
+
+  var $inputContainerCreateEntry = document.createElement('div');
+  $inputContainerCreateEntry.className = 'inputContainer';
+  $rowCreateEntry.appendChild($inputContainerCreateEntry);
+
+  var $urlInputCreateEntry = document.createElement('div');
+  $urlInputCreateEntry.className = 'avatarURLInput';
+  $inputContainerCreateEntry.appendChild($urlInputCreateEntry);
+
+  var $labelContainerCreateEntry = document.createElement('div');
+  $labelContainerCreateEntry.className = 'label';
+  $urlInputCreateEntry.appendChild($labelContainerCreateEntry);
+
+  var $labelCreateEntry = document.createElement('label');
+  $labelCreateEntry.setAttribute('for', 'urlInput');
+  $labelCreateEntry.textContent = dataEntry.title;
+  $labelContainerCreateEntry.appendChild($labelCreateEntry);
+
+  var $inputTextContainer = document.createElement('div');
+  $inputContainerCreateEntry.appendChild($inputTextContainer);
+  var $inputURLCreateEntry = document.createElement('p');
+  $inputURLCreateEntry.textContent = dataEntry.notes;
+  $inputTextContainer.appendChild($inputURLCreateEntry);
+
+  return $rowEntriesBody;
+}
+
 function DOMtreeNewEntry(data) {
   var $newEntryContainer = document.createElement('form');
   $newEntryContainer.className = 'newEntryContainer';
@@ -255,7 +309,15 @@ function switchDataView(dataView) {
     data.view = dataView;
   } else if (dataView === 'entries') {
     $entries.innerHTML = '';
-    $entries.appendChild(DOMTreeEntries(data));
+    var entriesData = DOMTreeEntries(data);
+
+    if (data.entries.length > 0) {
+      for (var i = 0; i <= data.entries.length - 1; i++) {
+        entriesData.appendChild(addJournalEntry(data.entries[i]));
+      }
+    }
+
+    $entries.appendChild(entriesData);
     $editProfile.className = 'hidden edit-profile';
     $createEntry.className = 'hidden create-entry';
     $profile.className = 'hidden profile';
@@ -308,7 +370,6 @@ document.addEventListener('click', function () {
   } else if (event.target.getAttribute('data-view') === 'entries') {
     switchDataView('entries');
   } else if (event.target.getAttribute('data-view') === 'create-entry') {
-    // console.log('success');
     switchDataView('create-entry');
   }
 });
