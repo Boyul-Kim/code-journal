@@ -103,62 +103,21 @@ function DOMTreeEntries(data) {
   $newEntryLink.setAttribute('data-view', 'create-entry');
   $newEntryButton.appendChild($newEntryLink);
 
+  return $entriesContainer;
+}
+
+function addJournalEntry(dataEntry) {
+
   var $rowEntriesBody = document.createElement('div');
   $rowEntriesBody.className = 'row';
-  $entriesContainer.appendChild($rowEntriesBody);
 
-  var $orderedList = document.createElement('ol');
+  var $orderedList = document.createElement('ul');
   $rowEntriesBody.appendChild($orderedList);
 
-  // start of fucntion for journal entry
-  function addJournalEntry(dataEntry) {
-    var $list = document.createElement('li');
-    $orderedList.appendChild($list);
+  var $list = document.createElement('li');
+  $orderedList.appendChild($list);
 
-    var $newEntryContainer = document.createElement('div');
-    $newEntryContainer.className = 'newEntryContainer';
-    $list.appendChild($newEntryContainer);
-
-    var $rowCreateEntry = document.createElement('div');
-    $rowCreateEntry.className = 'row';
-    $newEntryContainer.appendChild($rowCreateEntry);
-
-    var $imageContainerCreateEntry = document.createElement('div');
-    $imageContainerCreateEntry.className = 'imageContainer';
-    $rowCreateEntry.appendChild($imageContainerCreateEntry);
-
-    var $imageSourceCreateEntry = document.createElement('img');
-    $imageSourceCreateEntry.className = 'imageSource';
-    $imageSourceCreateEntry.setAttribute('src', dataEntry.image);
-    $imageContainerCreateEntry.appendChild($imageSourceCreateEntry);
-
-    var $inputContainerCreateEntry = document.createElement('div');
-    $inputContainerCreateEntry.className = 'inputContainer';
-    $rowCreateEntry.appendChild($inputContainerCreateEntry);
-
-    var $urlInputCreateEntry = document.createElement('div');
-    $urlInputCreateEntry.className = 'avatarURLInput';
-    $inputContainerCreateEntry.appendChild($urlInputCreateEntry);
-
-    var $labelContainerCreateEntry = document.createElement('div');
-    $labelContainerCreateEntry.className = 'label';
-    $urlInputCreateEntry.appendChild($labelContainerCreateEntry);
-
-    var $labelCreateEntry = document.createElement('label');
-    $labelCreateEntry.setAttribute('for', 'urlInput');
-    $labelCreateEntry.textContent = dataEntry.title;
-    $labelContainerCreateEntry.appendChild($labelCreateEntry);
-
-    var $inputTextContainer = document.createElement('div');
-    $inputContainerCreateEntry.appendChild($inputTextContainer);
-    var $inputURLCreateEntry = document.createElement('p');
-    $inputURLCreateEntry.textContent = dataEntry.notes;
-    $inputTextContainer.appendChild($inputURLCreateEntry);
-  }
-
-  addJournalEntry({ image: 'images/example.png', title: 'test', notes: 'test' });
-  addJournalEntry({ image: 'images/example.png', title: 'test', notes: 'test' });
-  /* var $newEntryContainer = document.createElement('div');
+  var $newEntryContainer = document.createElement('div');
   $newEntryContainer.className = 'newEntryContainer';
   $list.appendChild($newEntryContainer);
 
@@ -172,7 +131,7 @@ function DOMTreeEntries(data) {
 
   var $imageSourceCreateEntry = document.createElement('img');
   $imageSourceCreateEntry.className = 'imageSource';
-  $imageSourceCreateEntry.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $imageSourceCreateEntry.setAttribute('src', dataEntry.image);
   $imageContainerCreateEntry.appendChild($imageSourceCreateEntry);
 
   var $inputContainerCreateEntry = document.createElement('div');
@@ -189,16 +148,16 @@ function DOMTreeEntries(data) {
 
   var $labelCreateEntry = document.createElement('label');
   $labelCreateEntry.setAttribute('for', 'urlInput');
-  $labelCreateEntry.textContent = 'The Anayltical Machine';
+  $labelCreateEntry.textContent = dataEntry.title;
   $labelContainerCreateEntry.appendChild($labelCreateEntry);
 
   var $inputTextContainer = document.createElement('div');
   $inputContainerCreateEntry.appendChild($inputTextContainer);
   var $inputURLCreateEntry = document.createElement('p');
-  $inputURLCreateEntry.textContent = '';
-  $inputTextContainer.appendChild($inputURLCreateEntry); */
+  $inputURLCreateEntry.textContent = dataEntry.notes;
+  $inputTextContainer.appendChild($inputURLCreateEntry);
 
-  return $entriesContainer;
+  return $rowEntriesBody;
 }
 
 function DOMtreeNewEntry(data) {
@@ -350,7 +309,15 @@ function switchDataView(dataView) {
     data.view = dataView;
   } else if (dataView === 'entries') {
     $entries.innerHTML = '';
-    $entries.appendChild(DOMTreeEntries(data));
+    var entriesData = DOMTreeEntries(data);
+
+    if (data.entries.length > 0) {
+      for (var i = 0; i <= data.entries.length - 1; i++) {
+        entriesData.appendChild(addJournalEntry(data.entries[i]));
+      }
+    }
+
+    $entries.appendChild(entriesData);
     $editProfile.className = 'hidden edit-profile';
     $createEntry.className = 'hidden create-entry';
     $profile.className = 'hidden profile';
@@ -403,7 +370,6 @@ document.addEventListener('click', function () {
   } else if (event.target.getAttribute('data-view') === 'entries') {
     switchDataView('entries');
   } else if (event.target.getAttribute('data-view') === 'create-entry') {
-    // console.log('success');
     switchDataView('create-entry');
   }
 });
